@@ -139,4 +139,14 @@ public abstract class BaseActivity<VM extends BaseViewModel, V
         mViewModel.getUiChange().stopLoading();
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (mViewModel != null) {
+            getLifecycle().removeObserver(mViewModel);
+        }
+        if (mBinding != null) {
+            mBinding.unbind();
+        }
+    }
 }
