@@ -11,8 +11,14 @@ import com.yc.baselib.viewmodel.BaseViewModel;
  */
 public class MainViewModel extends BaseViewModel {
 
+
     public MainViewModel(@NonNull Application application) {
         super(application);
+    }
+
+    @Override
+    public void init() {
+
     }
 
 

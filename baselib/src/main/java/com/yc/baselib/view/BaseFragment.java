@@ -6,17 +6,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import com.yc.baselib.interfaces.IBaseView;
 import com.yc.baselib.interfaces.IUIchangView;
 import com.yc.baselib.viewmodel.BaseFragmentViewModel;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
-import java.util.logging.Logger;
 
 /**
  * @author yangchao
@@ -64,13 +63,24 @@ public abstract class BaseFragment<VM extends BaseFragmentViewModel,V extends Vi
 
         getLifecycle().addObserver(mViewModel);
         initAction();
-        mViewModel.init();  //改了初始化顺序 .
+        mViewModel.init();
         init();
     }
-
     private void initAction() {
-    }
+        mViewModel.getUiChange().startLoading.observe(this, new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean aBoolean) {
 
+            }
+        });
+        mViewModel.getUiChange().stopLoading.observe(this, new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean aBoolean) {
+
+            }
+        });
+
+    }
     protected abstract void init();
 
     private ViewGroup bindingView(int layoutId) {
