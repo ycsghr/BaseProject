@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModel;
  * @description: TODO
  * @date 2019-12-01
  */
-public class BaseFragmentViewModel extends BaseViewModel implements LifecycleObserver {
+public abstract class BaseFragmentViewModel extends BaseViewModel implements LifecycleObserver {
 
 
     public BaseFragmentViewModel(@NonNull Application application) {
