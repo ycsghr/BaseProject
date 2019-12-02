@@ -45,15 +45,17 @@ public class RequestManager {
     }
 
     private <T> T getService(final Class<T> service) {
-        mRetrofit =
-            new Retrofit.Builder()
-                .client(getOKHttpClient())
-                .baseUrl(mBaseUrl)
+        if (mRetrofit==null) {
+            mRetrofit =
+                new Retrofit.Builder()
+                    .client(getOKHttpClient())
+                    .baseUrl(mBaseUrl)
                     .addConverterFactory(GsonConverterFactory.create())
 //                .addConverterFactory(
 //                    JsonConverterFactory.create(TokenManager.packageTokenWithHeader()))
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .build();
+                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                    .build();
+        }
 //        }
         return mRetrofit.create(service);
     }

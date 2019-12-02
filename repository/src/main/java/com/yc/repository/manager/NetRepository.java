@@ -34,8 +34,8 @@ public class NetRepository {
     }
 
 
-    public static void configGet(NetCallBack callBack) {
-        packageCallback(RequestManager.get(ISystemService.class).configGet(),
+    public static void articleChapters(NetCallBack callBack) {
+        packageCallback(RequestManager.get(IService.class).articleChapters(),
             callBack);
     }
 

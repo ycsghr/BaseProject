@@ -3,6 +3,7 @@ package com.yc.baseproject;
 
 import com.yc.baselib.view.BaseActivity;
 import com.yc.baseproject.databinding.ActivityMainBinding;
+import com.yc.repository.dto.ArticleChaptersDto;
 import com.yc.repository.manager.NetCallBack;
 import com.yc.repository.manager.NetRepository;
 import java.util.ArrayList;
@@ -14,11 +15,11 @@ public class MainActivity extends BaseActivity<MainViewModel, ActivityMainBindin
     @Override
     protected void init() {
         NetRepository.init("https://www.wanandroid.com/");
-        NetRepository.configGet(new NetCallBack<ArrayList<data>>() {
+        NetRepository.articleChapters(new NetCallBack<ArrayList<ArticleChaptersDto>>() {
 
 
             @Override
-            public void onSuccess(ArrayList<data> data) {
+            public void onSuccess(ArrayList<ArticleChaptersDto> data) {
 
             }
         });
